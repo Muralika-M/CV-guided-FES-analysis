@@ -1,0 +1,49 @@
+	MOLINFO STRUCTURE=reference.pdb MOLTYPE=protein
+        WHOLEMOLECULES RESIDUES=all MOLTYPE=protein
+        rmsd: RMSD REFERENCE=reference.pdb TYPE=OPTIMAL
+        s0: CENTER ATOMS=@back-0 NOPBC
+        s1: CENTER ATOMS=@back-1 NOPBC
+        s2: CENTER ATOMS=@back-2 NOPBC
+        s3: CENTER ATOMS=@back-3 NOPBC
+        s4: CENTER ATOMS=@back-4 NOPBC
+        s5: CENTER ATOMS=@back-5 NOPBC
+        s6: CENTER ATOMS=@back-6 NOPBC
+        s7: CENTER ATOMS=@back-7 NOPBC
+        s8: CENTER ATOMS=@back-8 NOPBC
+        s9: CENTER ATOMS=@back-9 NOPBC
+
+        # Distances
+        d03: DISTANCE ATOMS=s0,s3 NOPBC
+        d04: DISTANCE ATOMS=s0,s4 NOPBC
+        d05: DISTANCE ATOMS=s0,s5 NOPBC
+        d06: DISTANCE ATOMS=s0,s6 NOPBC
+        d07: DISTANCE ATOMS=s0,s7 NOPBC
+        d08: DISTANCE ATOMS=s0,s8 NOPBC
+        d09: DISTANCE ATOMS=s0,s9 NOPBC
+        d14: DISTANCE ATOMS=s1,s4 NOPBC
+        d15: DISTANCE ATOMS=s1,s5 NOPBC
+        d16: DISTANCE ATOMS=s1,s6 NOPBC
+        d17: DISTANCE ATOMS=s1,s7 NOPBC
+        d18: DISTANCE ATOMS=s1,s8 NOPBC
+        d19: DISTANCE ATOMS=s1,s9 NOPBC
+        d25: DISTANCE ATOMS=s2,s5 NOPBC
+        d26: DISTANCE ATOMS=s2,s6 NOPBC
+        d27: DISTANCE ATOMS=s2,s7 NOPBC
+        d28: DISTANCE ATOMS=s2,s8 NOPBC
+        d29: DISTANCE ATOMS=s2,s9 NOPBC
+        d36: DISTANCE ATOMS=s3,s6 NOPBC
+        d37: DISTANCE ATOMS=s3,s7 NOPBC
+        d38: DISTANCE ATOMS=s3,s8 NOPBC
+        d39: DISTANCE ATOMS=s3,s9 NOPBC
+        d47: DISTANCE ATOMS=s4,s7 NOPBC
+        d48: DISTANCE ATOMS=s4,s8 NOPBC
+        d49: DISTANCE ATOMS=s4,s9 NOPBC
+        d58: DISTANCE ATOMS=s5,s8 NOPBC
+        d59: DISTANCE ATOMS=s5,s9 NOPBC
+        d69: DISTANCE ATOMS=s6,s9 NOPBC
+
+
+        PRINT ...
+        ARG=rmsd,d03,d04,d05,d06,d07,d08,d09,d14,d15,d16,d17,d18,d19,d25,d26,d27,d28,d29,d36,d37,d38,d39,d47,d48,d49,d58,d59,d69
+        FILE=COLVAR_CV_F STRIDE=1
+        ... PRINT
