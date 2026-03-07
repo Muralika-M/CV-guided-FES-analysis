@@ -1,6 +1,15 @@
 ## Collective Variable-Guided Engineering of the Free-Energy Surface of a Small Peptide
 
-## Folder format
+This repository contains analysis scripts, example data, and simulation input files used in the study:
+
+**“[Collective Variable-Guided Engineering of the Free-Energy Surface of a Small Peptide](https://arxiv.org/abs/2602.19906)”**
+
+The code reproduces the HLDA analysis, threshold scanning, and figure generation reported in the manuscript.
+
+---
+
+# Repository Structure
+
 
 ```text
 analysis/
