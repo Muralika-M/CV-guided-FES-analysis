@@ -49,12 +49,12 @@ def load_desc_df(path: Path) -> pd.DataFrame:
     df = pd.read_csv(path, sep=r"\s+", skiprows=skip, header=None, usecols=idxs)
     df.columns = [header[i] for i in idxs]
     return df
-
+    
 
 def drop_features(df, cv_tol=0.0, corr_tol=0.93):
     tmp = df.copy(deep=True)
     tmp = tmp.loc[:, (tmp.std() / tmp.mean()).abs() >= cv_tol]
-    corr_matrix = tmp.corr(method="spearman").abs()
+    corr_matrix = tmp.corr(method="pearson").abs()
     lower = corr_matrix.where(np.tril(np.ones(corr_matrix.shape), k=-1).astype(bool))
     to_drop = [column for column in lower.columns if any(lower[column] > corr_tol)]
     tmp.drop(to_drop, axis=1, inplace=True)
@@ -67,8 +67,9 @@ def compute_hlda(F_df, U_df, row_skip, npoints, corr_tol):
         return None, None, "no_descriptors"
 
     try:
-        df_all = pd.concat([F_df[desc], U_df[desc]], ignore_index=True)
-        selected = list(drop_features(df_all, cv_tol=0.0, corr_tol=corr_tol))
+        sel_F = set(drop_features(F_df[desc], cv_tol=0.0, corr_tol=corr_tol))
+        sel_U = set(drop_features(U_df[desc], cv_tol=0.0, corr_tol=corr_tol))
+        selected = sorted(sel_F & sel_U)
     except Exception as e:
         return None, None, f"drop_features_error:{e}"
 
