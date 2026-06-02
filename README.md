@@ -33,10 +33,16 @@ data/
 
 gromacs_inputs/
     mdp_files/
-        emin.mdp
-        nvt.mdp
-        npt.mdp
-        md.mdp
+    structures/
+        WT.gro
+        Y0A.gro
+        ...
+    topologies/
+        WT.top
+        WT.itp
+        Y0A.top
+        Y0A.itp
+        ...
 
 plumed/
     plumed.dat
@@ -44,18 +50,6 @@ plumed/
 figures/
     scripts_to_generate_figures.py
 ```
-
-## Quick run
-
-From this folder:
-
-```bash
-python figures/scripts_to_generate_figures.py
-```
-
-Generated figures are written to:
-
-- `figures/generated/`
 
 ## Notes
 - `analysis/hlda_analysis.py` can regenerate EV tables from raw `COLVAR_CV_F` and `COLVAR_CV_UF` data if needed.
